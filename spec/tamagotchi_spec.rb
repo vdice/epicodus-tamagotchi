@@ -56,14 +56,27 @@ describe(Tamagotchi) do
       my_pet.set_activity_level(5)
       expect(my_pet.is_happy()).to(eq(true))
     end
-    it("is happy if the activity level is below 5") do
+    it("is not happy if the activity level is below 5") do
       my_pet = Tamagotchi.new("green dragon")
       my_pet.set_activity_level(2)
       expect(my_pet.is_happy()).to(eq(false))
     end
-
-
   end
+
+  describe("#is_tired") do
+    it("takes nap when sleep level is below or equal to 3") do
+      my_pet = Tamagotchi.new("green dragon")
+      my_pet.set_sleep_level(2)
+      expect(my_pet.is_tired()).to(eq(true))
+    end
+
+    it("is not tired when sleep level is above 3") do
+      my_pet = Tamagotchi.new("green dragon")
+      my_pet.set_sleep_level(9)
+      expect(my_pet.is_tired()).to(eq(false))
+    end
+  end
+
 
 
 

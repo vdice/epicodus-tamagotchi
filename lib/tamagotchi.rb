@@ -45,8 +45,11 @@ class Tamagotchi
   end
 
   define_method(:is_happy) do
-    @activity_level >=5
+    @activity_level.>=(5)
   end
 
+  define_method(:is_tired) do
+    @sleep_level.<=(3)
+  end
 
 end
