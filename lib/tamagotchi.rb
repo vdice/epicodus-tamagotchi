@@ -49,11 +49,11 @@ class Tamagotchi
 
   define_method(:time_passes) do
     @food_level = @food_level.-(1) unless
-      @food_level.-(1).==(MINIMUM_LEVEL)
+      @food_level.-(1).<(MINIMUM_LEVEL)
     @activity_level = @activity_level.-(1) unless
-      @activity_level.-(1).==(MINIMUM_LEVEL)
+      @activity_level.-(1).<(MINIMUM_LEVEL)
     @sleep_level = @sleep_level.-(1) unless
-      @sleep_level.-(1).==(MINIMUM_LEVEL)
+      @sleep_level.-(1).<(MINIMUM_LEVEL)
   end
 
   define_method(:is_happy) do
