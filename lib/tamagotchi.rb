@@ -1,5 +1,6 @@
 class Tamagotchi
   MAXIMUM_LEVEL = 10
+  MINIMUM_LEVEL = 0
 
   define_method(:initialize) do |name|
     @name = name
@@ -25,7 +26,7 @@ class Tamagotchi
   end
 
   define_method(:is_alive) do
-    @food_level.>(0)
+    @food_level.>(MINIMUM_LEVEL)
   end
 
   define_method(:set_food_level) do |new_level|
@@ -46,9 +47,13 @@ class Tamagotchi
     end
   end
 
-  define_method(:time_passes) do ||
-    @food_level = @food_level.-(1)
-    @activity_level = @activity_level.-(1)
+  define_method(:time_passes) do
+    @food_level = @food_level.-(1) unless
+      @food_level.-(1).==(MINIMUM_LEVEL)
+    @activity_level = @activity_level.-(1) unless
+      @activity_level.-(1).==(MINIMUM_LEVEL)
+    @sleep_level = @sleep_level.-(1) unless
+      @sleep_level.-(1).==(MINIMUM_LEVEL)
   end
 
   define_method(:is_happy) do
