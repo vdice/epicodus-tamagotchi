@@ -41,5 +41,12 @@ class Tamagotchi
 
   define_method(:time_passes) do ||
     @food_level = @food_level.-(1)
+    @activity_level = @activity_level.-(1)
   end
+
+  define_method(:is_happy) do
+    @activity_level >=5
+  end
+
+
 end
