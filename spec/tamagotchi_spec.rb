@@ -40,6 +40,12 @@ describe(Tamagotchi) do
       my_pet.set_sleep_level(5)
       expect(my_pet.sleep_level()).to(eq(5))
     end
+
+    it("will not change if greater than max level") do
+      my_pet = Tamagotchi.new("green dragon")
+      my_pet.set_sleep_level(15)
+      expect(my_pet.sleep_level()).to(eq(10))
+    end
   end
 
   describe("#set_activity_level") do
@@ -76,8 +82,4 @@ describe(Tamagotchi) do
       expect(my_pet.is_tired()).to(eq(false))
     end
   end
-
-
-
-
 end

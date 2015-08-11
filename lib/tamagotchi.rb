@@ -1,10 +1,11 @@
 class Tamagotchi
+  MAXIMUM_LEVEL = 10
 
   define_method(:initialize) do |name|
     @name = name
-    @food_level = 10
-    @sleep_level = 10
-    @activity_level = 10
+    @food_level = MAXIMUM_LEVEL
+    @sleep_level = MAXIMUM_LEVEL
+    @activity_level = MAXIMUM_LEVEL
   end
 
   define_method(:name) do
@@ -28,15 +29,21 @@ class Tamagotchi
   end
 
   define_method(:set_food_level) do |new_level|
-    @food_level = new_level
+    if !new_level.>(MAXIMUM_LEVEL)
+      @food_level = new_level
+    end
   end
 
   define_method(:set_sleep_level) do |new_level|
-    @sleep_level = new_level
+    if !new_level.>(MAXIMUM_LEVEL)
+      @sleep_level = new_level
+    end
   end
 
   define_method(:set_activity_level) do |new_level|
-    @activity_level = new_level
+    if !new_level.>(MAXIMUM_LEVEL)
+      @activity_level = new_level
+    end
   end
 
   define_method(:time_passes) do ||
